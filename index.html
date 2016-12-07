@@ -1,0 +1,37 @@
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+  <script type="text/javascript" src="./scripts/app.js"></script>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+  <h1>Country Data</h1>
+  <div ng-app="myApp" ng-controller="oneController">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="text-right"><a href="" ng-click="sortField='name'; reverse=!reverse">country</a></th>
+          <th class="text-right"><a href="" ng-click="sortField='1960'; reverse=!reverse">1960</a></th>
+          <th class="text-right"><a href="" ng-click="sortField='1970'; reverse=!reverse">1970</a></th>
+          <th class="text-right"><a href="" ng-click="sortField='1970'; reverse=!reverse">1980</a></th>
+          <th class="text-right"><a href="" ng-click="sortField='1980'; reverse=!reverse">1990</a></th>
+          <th class="text-right"><a href="" ng-click="sortField='2000'; reverse=!reverse">2000</a></th>
+        <th class="text-right"><a href="" ng-click="sortField='2010'; reverse=!reverse">2010</a></th>
+          <th class="text-center">Growth 1960-2010</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="country in countries | orderBy:sortField:reverse">
+          <td>{{country.name}}</td>
+          <td class="text-right">{{country.1960 | number}}</td>
+          <td class="text-right">{{country.1970 | number}}</td>
+          <td class="text-right">{{country.1980 | number}}</td>
+          <td class="text-right">{{country.1990 | number}}</td>
+          <td class="text-right">{{country.2000 | number}}</td>
+          <td class="text-right">{{country.2010 | number}}</td>
+          <td class="text-right">{{100*(country.2010-country.1960)/country.1960 | number:0}}%
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
